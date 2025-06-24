@@ -1,12 +1,14 @@
-import driver
+
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def test_Incorrect_Email(driver):
+
     login_url = "https://app.ckcapital.co.uk/signin"
     driver.get(login_url)
+    
 
     username = "Shubhamm@codesis.tech"
     password = "Shubham@123"

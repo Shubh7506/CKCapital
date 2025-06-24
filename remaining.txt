@@ -1,3 +1,7 @@
 pytest
 selenium
 pytest-html
+
+pytest --html=report.html (To generate html report)
+
+start report.html (to open the html report)

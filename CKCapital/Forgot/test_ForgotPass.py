@@ -1,14 +1,15 @@
-import driver
+
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def test_Forgot_pass(driver):
+    
+    
+
     login_url = "https://app.ckcapital.co.uk/signin"
     driver.get(login_url)
-
-    
 
     forgot_pass = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//label[normalize-space()='Forgot Password ?']")))

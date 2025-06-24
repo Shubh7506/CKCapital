@@ -1,4 +1,4 @@
-import driver
+
 import time
 import pytest
 from selenium.webdriver.common.by import By
@@ -8,8 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def test_successful_login(driver):
+    
     login_url = "https://app.ckcapital.co.uk/signin"
     driver.get(login_url)
+    
 
     username = "Shubham@codesis.tech"
     password = "Shubham@123"

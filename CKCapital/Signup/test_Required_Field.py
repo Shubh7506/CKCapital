@@ -1,4 +1,4 @@
-import driver
+import pytest
 import pytest_check as check
 
 import time
@@ -7,8 +7,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 def test_signup_field(driver):
+    
     login_url = "https://app.ckcapital.co.uk/signin"
     driver.get(login_url)
+
+    time.sleep(2)
+    
 
     
 
@@ -41,13 +45,13 @@ def test_signup_field(driver):
     password_error = driver.find_element(By.XPATH, "//div[contains(text(),'Password is required')]").text
 
 
-    assert last_name_error.text.strip() == "Last Name is required"
-    assert first_name_error.text.strip() == "First Name is required"
-    assert  contact_error.text.strip() == "Contact is required"
-    assert email_error.text.strip() == "Email is required"
-    assert confirm_email_error.text.strip() == "Confirm Email is required"
-    assert city_error.text.strip() == "City is required"
-    assert password_error.text.strip() == "Password is required"
+    assert last_name_error.strip() == "Last Name is required"
+    assert first_name_error.strip() == "First Name is required"
+    assert contact_error.strip() == "Number is required"
+    assert email_error.strip() == "Email is required"
+    assert confirm_email_error.strip() == "Confirm Email is required"
+    assert city_error.strip() == "City is required"
+    assert password_error.strip() == "Password is required"
     
 
     time.sleep(3)

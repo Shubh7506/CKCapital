@@ -46,4 +46,15 @@ def default_login():
     
     assert "funding-evaluation" in driver.current_url.lower()
     yield driver
+
+
+
+@pytest.fixture
+def driver():
+    driver = webdriver.Chrome()
+    driver.maximize_window()
+    yield driver
+    driver.quit()
+
+
     

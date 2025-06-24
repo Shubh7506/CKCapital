@@ -143,6 +143,7 @@ def test_standard159(default_login):
 def test_standard229(default_login):
 
     driver = default_login  
+    time.sleep(3)
 
     Buy_now1 = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//strike[normalize-space()='328.00']")))
@@ -275,6 +276,7 @@ def test_standard761(default_login):
 def test_standard1181(default_login):
 
     driver = default_login  
+    time.sleep(3)
 
     Buy_now1 = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, "//strike[normalize-space()='1688.00']")))

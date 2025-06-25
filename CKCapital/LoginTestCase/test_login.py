@@ -6,15 +6,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-@pytest.fixture
+
 def test_successful_login(driver):
     
     login_url = "https://app.ckcapital.co.uk/signin"
     driver.get(login_url)
     
 
-    username = "Shubham@codesis.tech"
-    password = "Shubham@123"
+    username = "shubham@codesis.tech"
+    password = "Unique@123"
 
     username_field = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "email")))

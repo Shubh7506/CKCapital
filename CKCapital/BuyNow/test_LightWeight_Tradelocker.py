@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # LightWeight > Tradelocker > $61
-def test_light61(default_login):
+def test_light5k(default_login):
     
     driver = default_login
 
@@ -18,7 +18,7 @@ def test_light61(default_login):
     Light_Weight.click()
     
     Buy_now = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, "//div[@class='mainPageHolder-B']//div//div[1]//div[1]//a[1]//button[1]")))
+            EC.presence_of_element_located((By.XPATH, "//strike[normalize-space()='88.00']")))
     
     driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", Buy_now)
 
@@ -57,7 +57,7 @@ def test_light61(default_login):
 
 
 # # LightWeight > Tradelocker > $89
-def test_light89(default_login):
+def test_light10k(default_login):
 
     driver = default_login  
 
@@ -106,7 +106,7 @@ def test_light89(default_login):
 
 
 # LightWeight > Tradelocker > $159
-def test_light159(default_login):
+def test_light25k(default_login):
 
     driver = default_login  
 
@@ -160,7 +160,7 @@ def test_light159(default_login):
 
 
 # LightWeight > Tradelocker > $229
-def test_light229(default_login):
+def test_light50k(default_login):
 
     driver = default_login  
 
@@ -210,7 +210,7 @@ def test_light229(default_login):
 
 
 # LightWeight > Tradelocker > $369
-def test_light369(default_login):
+def test_light100k(default_login):
 
     driver = default_login  
 
@@ -259,7 +259,7 @@ def test_light369(default_login):
 
 
 # LightWeight > Tradelocker > $761
-def test_light761(default_login):
+def test_light200k(default_login):
 
     driver = default_login  
 
@@ -308,7 +308,7 @@ def test_light761(default_login):
 
 
 # LightWeight > Tradelocker > $1181
-def test_light1181(default_login):
+def test_light300k(default_login):
 
     driver = default_login  
 

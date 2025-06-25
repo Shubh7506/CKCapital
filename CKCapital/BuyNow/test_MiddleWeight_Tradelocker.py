@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 # MiddleWeight > Tradelocker > $61
-def test_middle61(default_login):
+def test_middle5k(default_login):
     
     driver = default_login
 
@@ -57,7 +57,7 @@ def test_middle61(default_login):
 
 
 # # MiddleWeight > Tradelocker > $89
-def test_middle89(default_login):
+def test_middle10k(default_login):
 
     driver = default_login  
 
@@ -106,7 +106,7 @@ def test_middle89(default_login):
 
 
 # MiddleWeight > Tradelocker > $159
-def test_middle159(default_login):
+def test_middle25k(default_login):
 
     driver = default_login  
 
@@ -155,7 +155,7 @@ def test_middle159(default_login):
 
 
 # MiddleWeight > Tradelocker > $229
-def test_middle229(default_login):
+def test_middle50k(default_login):
 
     driver = default_login  
 
@@ -205,7 +205,7 @@ def test_middle229(default_login):
 
 
 # MiddleWeight > Tradelocker > $369
-def test_middle369(default_login):
+def test_middle100k(default_login):
 
     driver = default_login  
 
@@ -254,7 +254,7 @@ def test_middle369(default_login):
 
 
 # MiddleWeight > Tradelocker > $761
-def test_middle761(default_login):
+def test_middle200k(default_login):
 
     driver = default_login  
 
@@ -303,7 +303,7 @@ def test_middle761(default_login):
 
 
 # MiddleWeight > Tradelocker > $1181
-def test_middle1181(default_login):
+def test_middle300k(default_login):
 
     driver = default_login  
     time.sleep(3)

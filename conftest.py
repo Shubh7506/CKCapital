@@ -1,20 +1,19 @@
 
 import pytest
 import time
+
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from CKCapital.utils.screenshot import save_screenshot_on_fail
 
-import logging
 
-logging.getLogger("urllib3.connectionpool").setLevel(logging.CRITICAL)
 
 
 @pytest.fixture
-def default_login():
+def default_login(request):
     
    
 
@@ -23,11 +22,14 @@ def default_login():
 
     driver.maximize_window()
 
+    # Attach the driver to the request for access in hooks
+    request.node.driver = driver
+
     login_url = "https://app.ckcapital.co.uk/signin"
     driver.get(login_url)
 
-    username = "shubham@codesis.tech"
-    password = "Unique@123"
+    username = "shubham@codesis.io"
+    password = "Testinng@123"
 
     username_field = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "email")))
@@ -45,15 +47,23 @@ def default_login():
     
     assert "funding-evaluation" in driver.current_url.lower()
     yield driver
-
+    driver.quit()
 
 
 @pytest.fixture
-def driver():
+def driver(request):
     driver = webdriver.Chrome()
     driver.maximize_window()
+    
+    request.node.driver = driver
     yield driver
     driver.quit()
 
 
-    
+def pytest_runtest_makereport(item, call):
+    save_screenshot_on_fail(item, call)
+
+
+
+
+

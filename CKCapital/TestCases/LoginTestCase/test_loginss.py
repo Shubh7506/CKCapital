@@ -30,15 +30,40 @@ def test_login(driver, row):
     password_field.send_keys(password)
     login_button.click()
 
+    # For valid email and password
     if expected_result == "success":
         WebDriverWait(driver, 10).until(
             EC.url_contains("funding-evaluation")
         )
         assert "funding-evaluation" in driver.current_url.lower()
+    
+    # For invalid password
     elif expected_result == "failure":
         error_message = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='INVALID_PASSWORD']"))
         ).text
         assert "INVALID_PASSWORD" in error_message.upper()
+    
+    # For invalid email
+    elif expected_result == "invalid_email":
+        error_message = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='User not registered.']"))
+        ).text
+        assert "user not registered" in error_message.lower()
+
+    # # For invalid numeric email
+    elif expected_result == "invalid_numeric_email":
+        error_message = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Invalid email']"))
+        ).text
+        expected_message = "Invalid email"
+        assert expected_message.lower() in error_message.lower()
+   
+
+    
+
+    
+
+
 
     

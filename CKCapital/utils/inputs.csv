@@ -2,4 +2,5 @@ email,password,expected_result
 shubham@codesis.io,Testing@123,success
 shubham@codesis.io,wrongpass,failure
 shubhammm@codesis.io,Testing@123,invalid_email
-3213@23123.io,wrongpass,invalid_numeric_email
+311223@1312,Testing@123,invalid_numeric_email
+,Testing@123,without_email

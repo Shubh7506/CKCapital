@@ -54,9 +54,25 @@ def test_login(driver, row):
     # # For invalid numeric email
     elif expected_result == "invalid_numeric_email":
         error_message = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Invalid email']"))
+        EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Enter a valid email address.']"))
         ).text
-        expected_message = "Invalid email"
+
+        print("Error Message:", error_message)
+
+        expected_message = "Enter a valid email address."
+
+        assert expected_message.lower() in error_message.lower()
+
+    elif expected_result == "without_email":
+        error_message = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, "//div[@class='error-message']"))
+        ).text
+
+        print("Error Message:", error_message)
+
+    
+        expected_message = "Email is required"
+
         assert expected_message.lower() in error_message.lower()
    
 

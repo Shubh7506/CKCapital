@@ -1,3 +1,3 @@
-email,password,
-user1@example.com,pass123,
-user2@example.com,pass456,
+email,password,expected_result
+shubham@codesis.io,Testing@123,success
+shubham@codesis.io,wrongpass,failure

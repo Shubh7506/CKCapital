@@ -42,16 +42,17 @@ def test_login(driver, row):
         error_message = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='INVALID_PASSWORD']"))
         ).text
-        assert "INVALID_PASSWORD" in error_message.upper()
+        assert "INVALID_PASSWORD" in error_message.strip().upper()
+
     
     # For invalid email
     elif expected_result == "invalid_email":
         error_message = WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='User not registered.']"))
         ).text
-        assert "user not registered" in error_message.lower()
+        assert "user not registered" in error_message.strip().lower()
 
-    # # For invalid numeric email
+    # For invalid numeric email
     elif expected_result == "invalid_numeric_email":
         error_message = WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='Enter a valid email address.']"))
@@ -61,7 +62,7 @@ def test_login(driver, row):
 
         expected_message = "Enter a valid email address."
 
-        assert expected_message.lower() in error_message.lower()
+        assert expected_message in error_message.strip().lower()
 
     elif expected_result == "without_email":
         error_message = WebDriverWait(driver, 10).until(
@@ -73,8 +74,21 @@ def test_login(driver, row):
     
         expected_message = "Email is required"
 
-        assert expected_message.lower() in error_message.lower()
-   
+        assert expected_message in error_message.strip().lower()
+
+    elif expected_result == "without_password":
+        error_message = WebDriverWait(driver, 10).until(
+        EC.visibility_of_element_located((By.XPATH, "//div[@class='error-message']"))
+        ).text
+
+        print("Error Message:", error_message)
+
+    
+        expected_message = "Password is required"
+
+        assert expected_message in error_message.strip().lower()
+
+    
 
     
 

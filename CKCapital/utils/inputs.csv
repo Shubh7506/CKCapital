@@ -4,3 +4,4 @@ shubham@codesis.io,wrongpass,failure
 shubhammm@codesis.io,Testing@123,invalid_email
 311223@1312,Testing@123,invalid_numeric_email
 ,Testing@123,without_email
+shubham@codesis.io,,without_password

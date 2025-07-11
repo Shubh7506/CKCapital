@@ -64,6 +64,8 @@ def test_login(driver, row):
 
         assert expected_message in error_message.strip().lower()
 
+    # For without email
+
     elif expected_result == "without_email":
         error_message = WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located((By.XPATH, "//div[@class='error-message']"))
@@ -75,6 +77,8 @@ def test_login(driver, row):
         expected_message = "Email is required"
 
         assert expected_message in error_message.strip().lower()
+
+    # For without password
 
     elif expected_result == "without_password":
         error_message = WebDriverWait(driver, 10).until(

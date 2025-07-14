@@ -1,0 +1,5 @@
+email,expected_message
+shubham@codesis.tech,Email_sent
+Shubham@xyz.tech,Check_email
+notanemail,Invalid_email
+,Email_is_required

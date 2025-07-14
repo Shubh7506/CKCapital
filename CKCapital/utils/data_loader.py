@@ -15,3 +15,16 @@ def load_test_data(csv_path=CSV_PATH):
         for row in reader:
             data.append(row)
     return data 
+
+
+file_path = os.path.join(os.path.dirname(__file__), 'forgot.csv')
+
+def load_forgot_password_cases():
+
+    data = []
+    
+    with open(file_path, newline='', encoding='utf-8') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            data.append(row)
+    return data

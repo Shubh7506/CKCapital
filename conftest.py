@@ -7,7 +7,8 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from CKCapital.utils.screenshot import save_screenshot_on_fail
+
+from CKCapital.utils.screenshot import attach_screenshot_to_report
 
 
 
@@ -60,8 +61,16 @@ def driver(request):
     driver.quit()
 
 
+@pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
-    save_screenshot_on_fail(item, call)
+    outcome = yield
+    rep = outcome.get_result()
+    if rep.when == "call" and rep.failed:
+        attach_screenshot_to_report(item, rep)
+    
+    
+
+
 
 
 

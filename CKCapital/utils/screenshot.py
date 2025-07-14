@@ -1,21 +1,20 @@
 import os
 import datetime
+import pytest
+import pytest_html
+from pytest_html import extras
 
-def save_screenshot_on_fail(item, call):
-    print(f"save_screenshot_on_fail called for {item.name}, phase: {call.when}")
-    if call.when == 'call':
-        outcome = call.excinfo
-        if outcome is not None:
-            driver = getattr(item, 'driver', None)
-            if driver is not None:
-                screenshots_dir = os.path.join(os.getcwd(), 'screenshots')
-                if not os.path.exists(screenshots_dir):
-                    os.makedirs(screenshots_dir)
-                timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
-                filename = f"{item.name}_{timestamp}.png"
-                filepath = os.path.join(screenshots_dir, filename)
-                try:
-                    driver.save_screenshot(filepath)
-                    print(f"Screenshot saved to {filepath}")
-                except Exception as e:
-                    print(f"Failed to take screenshot: {e}")
+def attach_screenshot_to_report(item, rep):
+    driver = getattr(item, "funcargs", {}).get("driver", None)
+    if driver:
+        import tempfile, os
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmpfile:
+            screenshot_path = tmpfile.name
+            driver.save_screenshot(screenshot_path)
+            with open(screenshot_path, "rb") as f:
+                image_data = f.read()
+            if hasattr(rep, "extra"):
+                rep.extra.append(extras.image(image_data, mime_type="image/png"))
+            else:
+                rep.extra = [extras.image(image_data, mime_type="image/png")]
+        os.remove(screenshot_path)

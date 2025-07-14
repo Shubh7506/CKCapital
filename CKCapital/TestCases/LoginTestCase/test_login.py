@@ -1,14 +1,11 @@
 import pytest
 from CKCapital.utils.data_loader import load_test_data
-import json
-import time
+
 import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from CKCapital.utils.data_loader import load_test_data
-# ... existing code ...
+
 
 test_data = load_test_data()
 
@@ -62,7 +59,7 @@ def test_login(driver, row):
 
         expected_message = "Enter a valid email address."
 
-        assert expected_message in error_message.strip().lower()
+        assert expected_message.lower().strip() in error_message.lower().strip()
 
     # For without email
 
@@ -76,7 +73,7 @@ def test_login(driver, row):
     
         expected_message = "Email is required"
 
-        assert expected_message in error_message.strip().lower()
+        assert expected_message.lower().strip() in error_message.lower().strip()
 
     # For without password
 
@@ -90,7 +87,7 @@ def test_login(driver, row):
     
         expected_message = "Password is required"
 
-        assert expected_message in error_message.strip().lower()
+        assert expected_message.lower().strip() in error_message.lower().strip()
 
     
 

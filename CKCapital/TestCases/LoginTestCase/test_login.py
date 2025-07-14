@@ -32,14 +32,14 @@ def test_login(driver, row):
         WebDriverWait(driver, 10).until(
             EC.url_contains("funding-evaluation")
         )
-        assert "funding-evaluation" in driver.current_url.lower()
+        assert "fundi-evaluation" in driver.current_url.lower()
     
     # For invalid password
     elif expected_result == "failure":
         error_message = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, "//p[normalize-space()='INVALID_PASSWORD']"))
         ).text
-        assert "INVALID_PASSWORD" in error_message.strip().upper()
+        assert "INVAL_PASSWORD" in error_message.strip().upper()
 
     
     # For invalid email

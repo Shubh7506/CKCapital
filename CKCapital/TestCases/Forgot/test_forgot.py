@@ -14,26 +14,26 @@ def test_forgot(driver, row):
     username = row["email"]
     expected_message = row["expected_message"]
 
-    # Wait for and click the 'Forgot Password ?' label
+   
     forgot_pass = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.XPATH, "//label[normalize-space()='Forgot Password ?']"))
     )
     forgot_pass.click()
 
-    # Wait for and interact with the email field
+  
     forgot_pass_field = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.ID, "email"))
     )
     forgot_pass_field.clear()
     forgot_pass_field.send_keys(username)
 
-    # Wait for and click the Submit button
+    
     submit_button = WebDriverWait(driver, 10).until(
         EC.element_to_be_clickable((By.XPATH, "//button[normalize-space()='Submit']"))
     )
     submit_button.click()
 
-    # Now wait for the expected result and assert
+    
     if expected_message == "Email_sent":
         message = WebDriverWait(driver, 10).until(
             EC.visibility_of_element_located((By.CSS_SELECTOR, "div[class='success_modal_container_bottom_div'] p"))
